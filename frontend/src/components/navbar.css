@@ -1,0 +1,15 @@
+.nav-bar{
+    padding: 5px;
+    background-color:beige;
+    width:100%;
+    border-bottom: 2px solid lightgray;
+}
+.nav-bar span{
+    padding-right: 10px;
+    padding-left: 10px;
+    margin: 5px;
+    background-color: gray;
+    box-shadow: 2px 2px 5px black;
+    color: white;
+    
+}

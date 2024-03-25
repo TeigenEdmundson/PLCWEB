@@ -1,0 +1,331 @@
+.main-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: beige;
+    max-width: 1000px;
+    min-width: 320px;
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+
+}
+
+.main-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; /* Ensure that children take all available space */
+    background-color: beige;
+    max-width: 1000px;
+    min-width: 320px;
+    width: 100%;
+    padding: 5px;
+}
+
+.full-post-item-container {
+    flex-grow: 1; /* Allow it to grow to fill available space */
+    max-width: 100%;
+    min-width: 320px;
+    width: 100%; /* Take up all available width */
+    align-items: center;
+    flex-direction: column;
+    background-color: beige;
+    padding: 10px;
+    box-sizing: border-box; /* Include padding in the total width */
+}
+.post-list-container{
+    display: flex;
+    flex-grow: 1;
+    margin: 10px;
+    max-width: 30%;
+    min-width:320px;
+    overflow-y: scroll;
+    max-height: 100vh;
+}
+.full-post{
+    background-color:#1d1d1d;
+    padding:15px;
+    margin:5px;
+    border-radius: 10px;
+    max-width: 620px;
+    min-width: 280px;
+    width: 90%;
+    cursor: default;
+}
+.full-post-title{
+    display:flex;
+    justify-content:space-between;
+    font-size:32px;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.full-post-details{
+    font-size:medium;
+    display:flex;
+    flex-direction:column;
+    align-items: flex-end;
+}
+.full-post-content{
+    width: 90%;
+    overflow-wrap: break-word;
+    text-wrap:balance;
+}
+.full-post-content{
+    text-wrap: wrap;
+    max-width: 100%;
+    min-width: 320px;
+}
+.post-list{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    cursor: default;
+    
+}
+.post-list-item{
+    display: flex;
+    flex-direction: column;
+
+    padding: 20px;
+    background-color: #1d1d1d;
+    border-radius: 10px;
+    margin-top: 10px;
+
+}
+.post-list-item:hover{
+    background-color: #2d2d2d;
+}
+.post-list-item-header{
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    font-weight:bold;
+}
+
+.post-list-item-title{
+    font-size:32px;
+}
+
+.post-list-item-content{
+    color:white;
+    font-size: 18px;
+    text-wrap: nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    max-width:300px;
+}
+
+
+.post-list-header{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    padding:10px;
+    background-color: #1d1d1d;
+    border-radius: 10px;
+    font-weight:bold;
+    font-size: 24px;
+}
+.post-list-header-selected:hover{
+    cursor: pointer;
+    background-color: #2d2d2d;
+}
+.post-list-header-selected{
+    padding:10px;
+    border-radius: 10px;
+    background-color: #1d1d1d;
+}
+.post-list-header-not-selected{
+    padding:10px;
+    border-radius: 10px;
+    background-color: rgb(88, 27, 119);
+}
+.post-list-header-selected:active{
+    animation-name: colorfadeout;
+    animation-duration: 1s;
+}
+@keyframes colorfadeout{
+    from{
+        background-color: #1d1d1d;
+    }
+    to{
+        background-color:rgb(88, 27, 119);
+    }
+}
+
+.make-post-button{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+
+    padding:20px;
+    margin-top: 10px;
+    background-color: #1d1d1d;
+    border-radius: 10px;
+    font-weight:bold;
+    font-size: 24px; 
+    cursor: pointer;
+}
+
+.make-post-button:hover{
+    color:#6d6d6d
+}
+
+.form-container{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #2d2d2d;
+    min-width: 320px;
+    border-radius:10px;
+    padding: 10px;
+    position: absolute;
+    top: 25%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+
+}
+
+.form-title{
+    display:flex;
+    flex-direction: column;
+    font-size: 32px;
+    font-weight:bold;
+    width:100%
+}
+
+.form-content{
+    margin:10px;
+    display:flex;
+    flex-direction: column;
+    font-size: 32px;
+    font-weight:bold;
+    width:100%
+}
+
+.form-submit{
+    border: 0;
+    padding: 5px;
+    border-radius: 20px;
+    background-color: rgb(88, 27, 119);;
+    width:80%;
+    margin:10px;
+}
+#title{
+    padding: 10px;
+    margin:10px;
+    border:0px;
+    border-radius: 8px;
+    width: 90%;
+    resize: none;
+    font-size: 16px;
+    height: 30px;
+    font-size: 18px;
+}
+.form-background{
+    position: absolute;
+    left: 0%;
+    top:0%;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px);
+}
+
+/* COMMENTS */
+.list-item-content{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-grow: 1;
+    margin-top:5px;
+    cursor: default;
+}
+.comment-list-item{
+    width:100%;
+    border-bottom: 1px solid #4d4d4d;
+    padding-bottom: 10px;
+}
+.comment-list{
+    width:100%;
+}
+.comment-list-header{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+
+    padding:10px;
+    margin-bottom: 10px;
+    background-color: #2d2d2d;
+    border-radius: 10px;
+    font-weight:bold;
+    font-size: 24px;
+    cursor: pointer;
+}
+.comment-list-header:hover{
+    color:#6d6d6d;
+}
+
+#comment-input{
+    padding: 10px;
+    margin:10px;
+    border:0px;
+    border-radius: 8px;
+    width: 90%;
+    resize: none;
+    font-size: 16px;
+    height: 120px;
+}
+.comment-form button {
+    padding: 10px;
+    align-self: flex-end;
+    margin: 10px;
+    margin-right: 30px;
+    width: 20%;
+    border: 0px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight:bold;
+    background-color: rgb(88, 27, 119);
+    cursor: pointer;
+
+}
+
+.comment-form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+#post-form-content{
+    padding: 10px;
+    margin:10px;
+    border:0px;
+    border-radius: 8px;
+    width: 90%;
+    resize: none;
+    font-size: 16px;
+    height: 120px;
+}
+
+.mobile_back_button{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width:40%;
+    max-width: 70px;
+    padding: 10px;
+    margin: 5px;
+    color: white;
+    background-color: rgb(88, 27, 119);
+    border-radius: 30px;
+}
+
