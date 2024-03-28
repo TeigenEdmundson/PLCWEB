@@ -27,6 +27,9 @@
     box-shadow: 2px 2px 5px black;
     border-radius: 3px;
     border: 1px solid white;
+    cursor: pointer;
+    color:white;
+    font-weight: bold;
 }
 .not-last-one{
     background-color: #373797;

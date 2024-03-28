@@ -35,7 +35,7 @@ function HomePage() {
         return { width };
       }
       const {width} = useViewport();
-      const mobile = width < 500;
+      const mobile = width < 800;
 
 
     function onIssueOneLoadSuccess({ numPages }) {
@@ -119,7 +119,7 @@ function HomePage() {
                 <div className="content-container">
                     <img src='/assets/PLCGIF.gif' alt="PLC LOGO" style={{ width: "50%" }} />
                     {issueOneVisible && <Document className="pdf-viewer"file="/assets/PLC1_WEBFLAT.pdf" onLoadSuccess={onIssueOneLoadSuccess}>
-                        <Page pageNumber={onePageNumber} width={mobile&& width - 40}/>
+                        <Page pageNumber={onePageNumber} width={mobile&& (width-40)}/>
                         {(onePageNumber !== 1 && onePageNumber !== oneNumPages && !mobile) && <Page pageNumber={onePageNumber+1}/>}
                     </Document>}
                     {issueTwoVisible && <Document className="pdf-viewer"file="/assets/PLC2_WEBFLAT.pdf" onLoadSuccess={onIssueTwoLoadSuccess}>

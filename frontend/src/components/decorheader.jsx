@@ -1,5 +1,6 @@
 import './decorheader.css'
 import {GiCigarette} from "react-icons/gi";
+import { Link } from 'react-router-dom';
 
 export default function DecorHeader(){
     return(
@@ -8,11 +9,11 @@ export default function DecorHeader(){
                 <GiCigarette style={{marginRight:"10px"}} size={20}/>
                 <span style={{fontSize:"20"}}>ParkingLotChronicles</span>
             </div>
-            <div className="decor-header-options">
+            <Link to="error/404" className="decor-header-options">
                 <span className="not-last-one">6</span>
                 <span className="not-last-one">6</span>
                 <span className="last-one">6</span>
-            </div>
+            </Link>
         </div>
     )
 }
