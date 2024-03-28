@@ -28,7 +28,7 @@ from backend.entities import (
 from backend import database as db
 
 UPLOAD_DIR="uploads"
-posts_router = APIRouter(prefix="/posts", tags=["Posts"])
+posts_router = APIRouter(prefix="/api/posts", tags=["Posts"])
 ALLOWED_IMAGE_TYPES = {"image/jpeg", "image/png", "image/gif"}
 ALLOWED_VIDEO_TYPES = {"video/mp4", "video/webm", "video/ogg"}
 

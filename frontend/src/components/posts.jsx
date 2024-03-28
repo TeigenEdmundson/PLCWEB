@@ -70,7 +70,7 @@ function PostListContainer(){
     const {data , refetch} = useQuery({
         queryKey: ["posts"],
         queryFn: () => (
-            fetch("http://127.0.0.1:8000/posts")
+            fetch("http://parkinglotchronicles.com/api/posts")
             .then((response) => response.json())
         ),
     });
@@ -92,7 +92,7 @@ const PostForm = ({handleSuccess}) => {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/posts/', {
+      const response = await fetch('http://parkinglotchronicles.com/api/posts/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -114,7 +114,7 @@ const PostForm = ({handleSuccess}) => {
         formData.append('file', file);
         console.log(formData);
 
-        const uploadResponse = await fetch('http://127.0.0.1:8000/posts/uploads', {
+        const uploadResponse = await fetch('http://parkinglotchronicles.com/api/posts/uploads', {
         method: 'POST',
         body: formData
         });
@@ -179,7 +179,7 @@ const CommentForm = ({handleSuccess, postId}) => {
       console.log("something")
       
       try {
-        const response = await fetch(`http://127.0.0.1:8000/posts/${postId}`, {
+        const response = await fetch(`http://parkinglotchronicles.com/api/posts/${postId}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -236,7 +236,7 @@ function CommentList({comments}){
 }
 
 async function getPostMedia(postId, setIsImage) {
-    const res = await fetch(`http://127.0.0.1:8000/posts/uploads/${postId}`);
+    const res = await fetch(`http://parkinglotchronicles.com/api/posts/uploads/${postId}`);
     const mediaBlob = await res.blob();
     const isImage = isBlobImage(mediaBlob);
     const isVideo = isBlobVideo(mediaBlob);
@@ -269,7 +269,7 @@ function FullPostItem({ postId, mobile }) {
     const { data, refetch } = useQuery({
         queryKey: ["posts", postId],
         queryFn: () => (
-            fetch(`http://127.0.0.1:8000/posts/${postId}`)
+            fetch(`http://parkinglotchronicles.com/api/posts/${postId}`)
             .then((response) => response.json())
         ),
         enabled: postId !== undefined,
