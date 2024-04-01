@@ -15,12 +15,16 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 function HomePage() {
     const [issueOneVisible, setIssueOneVisible] = useState(false);
     const [issueTwoVisible, setIssueTwoVisible] = useState(false);
+    const [issueThreeVisible, setIssueThreeVisible] = useState(false);
 
     const [oneNumPages, setOneNumPages] = useState(0);
     const [onePageNumber, setOnePageNumber] = useState(1);
 
     const [twoNumPages, setTwoNumPages] = useState(0);
     const [twoPageNumber, setTwoPageNumber] = useState(1);
+
+    const [threeNumPages, setThreeNumPages] = useState(0);
+    const [threePageNumber, setThreePageNumber] = useState(1);
 
     const useViewport = () => {
         const [width, setWidth] = React.useState(window.innerWidth);
@@ -46,14 +50,25 @@ function HomePage() {
         setTwoNumPages(numPages);
     }
 
+    function onIssueThreeLoadSuccess({ numPages }) {
+        setThreeNumPages(numPages);
+    }
+
     function issueOneClicked(){
         setIssueOneVisible(true);
         setIssueTwoVisible(false);
+        setIssueThreeVisible(false);
     }
 
     function issueTwoClicked(){
         setIssueTwoVisible(true);
         setIssueOneVisible(false);
+        setIssueThreeVisible(false);
+    }
+    function issueThreeClicked(){
+        setIssueTwoVisible(false);
+        setIssueOneVisible(false);
+        setIssueThreeVisible(true);
     }
 
     function pageForward(){
@@ -75,6 +90,17 @@ function HomePage() {
                 }
                 else{
                     setTwoPageNumber(twoPageNumber + 2);
+                }
+            }
+
+        }
+        else if(issueThreeVisible){
+            if(threePageNumber < threeNumPages){
+                if(threePageNumber == 1|| mobile){
+                    setThreePageNumber(threePageNumber + 1);
+                }
+                else{
+                    setThreePageNumber(threePageNumber + 2);
                 }
             }
 
@@ -104,11 +130,23 @@ function HomePage() {
             }
 
         }
+        if(issueThreeVisible){
+            if(threePageNumber > 1){
+                if(threePageNumber == 2|| mobile){
+                    setThreePageNumber(threePageNumber - 1);
+                }
+                else{
+                    setThreePageNumber(threePageNumber - 2);
+                }
+            }
+
+        }
     }
 
     function closePDF(){
         setIssueOneVisible(false);
         setIssueTwoVisible(false);
+        setIssueThreeVisible(false);
     }
 
     return (
@@ -126,7 +164,11 @@ function HomePage() {
                         <Page pageNumber={twoPageNumber} width={mobile&& width - 40}/>
                         {(twoPageNumber !== 1 && twoPageNumber !== twoNumPages && !mobile) && <Page pageNumber={twoPageNumber+1}/>}
                     </Document>}
-                    {(issueOneVisible || issueTwoVisible) &&<div className="pdf-interface"><IoIosArrowBack size={30} onClick={pageBack}/><span onClick={closePDF}>CLOSE</span><IoIosArrowForward size={30} onClick={pageForward}/></div>}
+                    {issueThreeVisible && <Document className="pdf-viewer"file="/assets/PLC3_WEB.pdf" onLoadSuccess={onIssueThreeLoadSuccess}>
+                        <Page pageNumber={threePageNumber} width={mobile&& width - 40}/>
+                        {(threePageNumber !== 1 && threePageNumber !== threeNumPages && !mobile) && <Page pageNumber={threePageNumber+1}/>}
+                    </Document>}
+                    {(issueOneVisible || issueTwoVisible || issueThreeVisible) &&<div className="pdf-interface"><IoIosArrowBack size={30} onClick={pageBack}/><span onClick={closePDF}>CLOSE</span><IoIosArrowForward size={30} onClick={pageForward}/></div>}
                     <div className="zines">
                     <div className="issue" onClick={issueOneClicked}>
                         <img src="/assets/PLC1-thumb.png" alt="PLC issue 1 thumbnail" width="200"/>
@@ -135,6 +177,10 @@ function HomePage() {
                     <div className="issue" onClick={issueTwoClicked}>
                         <img src="/assets/PLC2-thumb.png" alt="PLC issue 2 thumbnail" width="200"/>
                         <span style={{color:"red", textDecoration:"underline", fontSize:"36px", fontWeight:"bold"}}>ISSUE 2</span>
+                    </div>
+                    <div className="issue" onClick={issueThreeClicked}>
+                        <img src="/assets/PLC3-thumb.png" alt="PLC issue 3 thumbnail" width="200"/>
+                        <span style={{color:"red", textDecoration:"underline", fontSize:"36px", fontWeight:"bold"}}>ISSUE 3</span>
                     </div>
                     </div>
                 </div>

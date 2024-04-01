@@ -9,6 +9,7 @@ import { FaArrowLeft } from "react-icons/fa6";
 
 import NavBar from "./navbar"
 import DecorHeader from "./decorheader";
+import Footer from "./footer";
 
 
 
@@ -342,6 +343,7 @@ return(
             <PostListContainer/>
             <FullPostItemContainer postId={postId} mobile={false}/>
         </div>: (postId ? <FullPostItemContainer postId={postId} mobile={true}/>: <PostListContainer/>)}
+            <Footer />
     </div>
 )
 }
